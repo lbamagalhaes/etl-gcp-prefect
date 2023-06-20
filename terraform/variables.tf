@@ -4,6 +4,8 @@ locals {
 
 variable "project" {
   description = "Your GCP Project ID"
+  default = "etl-prefect-gcp"
+  type = string
 }
 
 variable "region" {

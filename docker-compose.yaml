@@ -1,0 +1,32 @@
+version: '3' 
+  services:
+    pgdatabase:
+      image: postgres:13
+      environment:
+        - POSTGRES_USER=root
+        - POSTGRES_PASSWORD=root
+        - POSTGRES_DB=table
+      volumes:
+        - "./postgres/postgres-volume:/var/lib/postgresql/data:rw"
+      ports:
+        - "5432:5432"
+    pgadmin:
+      image: dpage/pgadmin4
+      environment:
+        - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+        - PGADMIN_DEFAULT_PASSWORD=root
+      ports:
+        - "8080:80"
+    
+    # dbt-bq-dtc:
+    #   build:
+    #     context: .
+    #     dockerfile: ./dbt/Dockerfile.dbt
+    #     target: dbt-bigquery
+    #   image: dbt/bigquery
+    #   volumes:
+    #     - .:/usr/app
+    #     - ~/.dbt/dbt-volume/:/root/.dbt/
+    #     - ~/.google/credentials/google_credentials.json:/.google/credentials/google_credentials.json
+    #   network_mode: host
+    
