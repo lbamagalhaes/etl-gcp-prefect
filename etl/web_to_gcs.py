@@ -44,11 +44,9 @@ def etl_web_to_gcs(color: str, year: int, month: int) -> None:
     df_cleaned = clean_data(df, color)
     path = write_local_parquet(df_cleaned, color, dataset_file)
     upload_to_gcs(path)
-
-if __name__ == "__main__":
-    colors = ["green"]
-    years = [2019,2020,2021]
-    months = range(1, 13)
+    
+@flow()
+def etl_parent_flow(colors: list, years: list, months: list):
     for color in colors: 
         for year in years:
             for month in months:
@@ -56,4 +54,8 @@ if __name__ == "__main__":
                     etl_web_to_gcs(color, year, month)
                 except Exception as e:
                     print(e)
+
+if __name__ == "__main__":
+    etl_parent_flow(colors=["green"], years=[2019,2020,2021], months=range(1, 13))
+    
 

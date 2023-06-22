@@ -1,0 +1,55 @@
+###
+### A complete description of a Prefect Deployment for flow 'etl-parent-flow'
+###
+name: Web to Google Cloud Storage
+description: null
+version: 087486b44c1fcc93b54f7e19d46b0a53
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {"colors": ["green","yellow"], "years":[2019,2020,2021], "months": [1,2,3,4,5,6,7,8,9,10,11,12]}
+schedule: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: null
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: etl-parent-flow
+manifest_path: null
+storage: null
+path: /home/lbamagalhaes/etl-gcp-prefect/etl
+entrypoint: web_to_gcs.py:etl_parent_flow
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    colors:
+      title: colors
+      position: 0
+      type: array
+      items: {}
+    years:
+      title: years
+      position: 1
+      type: array
+      items: {}
+    months:
+      title: months
+      position: 2
+      type: array
+      items: {}
+  required:
+  - colors
+  - years
+  - months
+  definitions: null
