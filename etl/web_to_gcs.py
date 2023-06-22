@@ -56,6 +56,7 @@ def etl_parent_flow(colors: list, years: list, months: list):
                     print(e)
 
 if __name__ == "__main__":
-    etl_parent_flow(colors=["green"], years=[2019,2020,2021], months=range(1, 13))
+    #"colors": ["green","yellow"], "years":[2019,2020,2021], "months": [1,2,3,4,5,6,7,8,9,10,11,12]
+    etl_parent_flow(colors=["green"], years=[2020], months=[1])
     
 
